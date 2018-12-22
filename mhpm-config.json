@@ -1,0 +1,6 @@
+{
+  "name": "mhpm-npm",
+  "pkgfile": "https://cdn.jsdelivr.net/gh/munchkinhalfling/mhpm-npm/npm.js",
+  "version": "1.00",
+  "dependencies": ["Easy XHR"]
+}
