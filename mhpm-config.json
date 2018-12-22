@@ -1,6 +1,6 @@
 {
   "name": "mhpm-npm",
-  "pkgfile": "https://gitcdn.link/repo/munchkinhalfling/mhpm-npm/master/npm.js",
+  "pkgfile": "https://raw.githack.com/munchkinhalfling/mhpm-npm/master/npm.js",
   "version": "1.00",
   "dependencies": ["Easy XHR", "MHPM Scripts"]
 }
