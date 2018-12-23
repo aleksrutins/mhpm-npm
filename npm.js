@@ -1,15 +1,10 @@
 ((EasyXHR, MHPMScripts) => {
   let npm;
-  let PackageRuntimeInstance = class {
-    constructor(packagePath) {
-      this._pkgPath = packagePath;
-    }
-    require(pkg) {
+  let PackageRuntimeInstance = packagePath => {
+    this.require = pkg => {
       if(pkg.startsWith('./')) {
-        // local to package
-        return npm.load(this._pkgPath + pkg.slice(2), 'path');
+         return npm.load(packagePath + pkg.slice(2), 'path');
       } else {
-        // npm package
         return npm.load(pkg);
       }
     }
