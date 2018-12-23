@@ -4,7 +4,10 @@
     return {
       require(pkg) {
         if(pkg.startsWith('./')) {
-           return npm.load(packagePath + pkg.slice(2), 'path');
+          if(pkg.split('.') < 3) {
+            pkg = pkg + '.js';
+          }
+          return npm.load(packagePath + pkg.slice(2), 'path');
         } else {
           return npm.load(pkg);
         }
