@@ -1,13 +1,15 @@
 ((EasyXHR, MHPMScripts) => {
   let npm;
   let PackageRuntimeInstance = packagePath => {
-    this.require = pkg => {
-      if(pkg.startsWith('./')) {
-         return npm.load(packagePath + pkg.slice(2), 'path');
-      } else {
-        return npm.load(pkg);
+    return {
+      require(pkg) {
+        if(pkg.startsWith('./')) {
+           return npm.load(packagePath + pkg.slice(2), 'path');
+        } else {
+          return npm.load(pkg);
+        }
       }
-    }
+    };
   }
   let getPath = (fileOrPath) => {
     if(fileOrPath.endsWith('/')) {
@@ -36,7 +38,7 @@
           break;
       }
       let transformedPkgSrc = Babel.transform(npmPkgSource, {presets: ['es2015']}).code;
-      let require = new PackageRuntimeInstance(pkgPath).require;
+      let require = PackageRuntimeInstance(pkgPath).require;
       let module = {exports: {}};
       let exports = new Proxy(module.exports, {});
       eval(transformedPkgSrc);
