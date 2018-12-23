@@ -14,12 +14,10 @@
   let getPath = (fileOrPath) => {
     if(fileOrPath.endsWith('/')) {
       return fileOrPath; // it's a path
-    } else if(fileOrPath.split('.').length > 1) {
+    } else {
       let pathParts = fileOrPath.split('/');
       pathParts.splice(pathParts.length-1, 1);
       return pathParts.join('/') + '/';
-    } else {
-      return fileOrPath + '/';
     }
   };
   npm = {
